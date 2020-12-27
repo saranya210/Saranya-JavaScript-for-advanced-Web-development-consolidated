@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style> 
+        #clock { 
+            font-size: 155px; 
+            width: 950px; 
+            margin: 200px; 
+            text-align: center; 
+            border: 2px solid rgb(235, 11, 11); 
+            border-radius: 20px; 
+            background-color: chocolate;
+            border-style: groove;
+            border-color: darkred;
+    
+        } 
+    
+        body {
+    font-family: Arial, sans-serif;
+}
+
+label.ampm-switch {
+    z-index: 1;
+    position: relative;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 3px;
+    overflow: hidden;
+    width: 200px;
+    height: 180px;
+    margin: 0;
+    cursor: pointer;
+    background-color: #70480b;
+}
+label.ampm-switch:before,
+label.ampm-switch:after {
+    box-sizing: border-box;
+    display: block;
+    width: 300px;
+    height: 100px;
+    font-size: 40px;
+    /* font-weight: bold; */
+    text-align: center;
+    line-height: 20px;
+    color: white;
+}
+label.ampm-switch:before {
+    content: "12 HOURS";
+}
+
+label.ampm-switch:after {
+    content: "24 HOURS";
+}
+
+label.ampm-switch input {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0.1);
+    filter: alpha(opacity=0.1);
+    opacity: .001;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+}
+
+
+label.ampm-switch .toggle-button {
+    z-index: 2;
+    display: inline-block;  
+    position: absolute;
+    top:0;
+    padding: 0;
+    margin: 0;
+    width: 200px;
+    height: 80px;
+    background: transparent;
+    box-sizing: border-box;
+    background-clip: padding-box;
+    white-space: nowrap;
+    border: 1px solid #dee1e8;
+    color: #454545;
+    background-color: #dee1e8;
+    -webkit-transition: top .05s ease-in-out;
+    -moz-transition: top .05s ease-in-out;
+    -o-transition: top .05s ease-in-out;
+    -ms-transition: top .05s ease-in-out;
+    transition: top .05s ease-in-out;
+    background: #fbfcfd
+
+}
+</style>
+    
+</head>
+<body>
+   
+     
+      <button type="button" onclick="hour12()" id="12hour"> 12 HOUR TIME</button>
+      <button type="button" onclick="hour24()" id="24hour"> 24 HOUR TIME</button>
+      <div id="clock">8:10:45</div>
+
+      <script>
+          var show12 = true
+             function hour12()
+                {
+                show12=true
+                 }
+              function hour24()
+              {
+              show12=false
+              }
+    function showtime()
+    {
+        if (show12==true)
+        {
+            show12Time()
+            
+        }
+        else
+        show24Time()
+
+    }
+//setInterval(show12Time, 1000); 
+        function show12Time() { 
+            let time = new Date(); 
+            let hour = time.getHours(); 
+            let min = time.getMinutes(); 
+            let sec = time.getSeconds(); 
+            am_pm = "AM"; 
+  
+            if (hour > 12) { 
+                hour -= 12; 
+                am_pm = "PM"; 
+            } 
+            if (hour == 0) { 
+                hr = 12; 
+                am_pm = "AM"; 
+            } 
+  
+            hour = hour < 10 ? "0" + hour : hour; 
+            min = min < 10 ? "0" + min : min; 
+            sec = sec < 10 ? "0" + sec : sec; 
+  
+            let currentTime = hour + ":"  
+                + min + ":" + sec + am_pm; 
+
+          
+            document.getElementById("clock") 
+                .innerHTML = currentTime; 
+        } 
+  
+     //   show12Time(); 
+
+     
+        function show24Time() { 
+            let time = new Date(); 
+            let hour = time.getHours(); 
+            let min = time.getMinutes(); 
+            let sec = time.getSeconds(); 
+    
+             
+    
+             
+            hour = hour < 10 ? "0" + hour : hour; 
+            min = min < 10 ? "0" + min : min; 
+            sec = sec < 10 ? "0" + sec : sec; 
+  
+            let currentTime = hour + ":"  
+                + min + ":" + sec ; 
+
+          
+            document.getElementById("clock") 
+                .innerHTML = currentTime; 
+        } 
+        setInterval(showtime, 1000); 
+        showtime(); 
+      </script>
+</body>
+</html>

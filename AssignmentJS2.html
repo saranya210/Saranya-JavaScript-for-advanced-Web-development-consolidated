@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For loop that will iterate from 0 to 100</title>
+</head>
+<body>
+  <script>
+
+for (let number=0; number <= 15; number++)
+{
+    let isPrime = true;
+    if (number === 1)
+    {
+        document.write("1 is an odd number<br>");
+    }
+    else if(number === 2)
+    {
+    document.write("2 is an even and prime number<br>");
+    }
+    else if(number > 1)
+
+    {
+        for (let i=2; i < number; i++ )
+        {
+            if (number % i==0)
+            {
+                isPrime = false;
+            }
+        }
+        if(isPrime) 
+        {
+            document.write(number + "is a prime number and odd number<br>");
+        }
+        else
+        {
+            if(number % 1 == 0) 
+            {
+                isPrime=false;
+            }
+            if (isPrime)
+            {
+                document.write(number + "is a prime and odd number<br>");
+            }
+
+            else if(number === 0) 
+            {
+                document.write(number + "is an even number<br>");
+            }
+            else if(number % 2 ===0)
+            {
+                document.write(number + "is an even number<br>");
+            }
+            else
+            {
+                document.write(number + "is an odd number<br>");
+            }
+        }
+    }
+
+      
+}
+    
+              
+  </script> 
+</body>
+</html>
+
+
